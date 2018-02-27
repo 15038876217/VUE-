@@ -1,9 +1,12 @@
 <template>
   <div class="box">
     <!-- 顶部 -->
-        <mt-header fixed title="黑马程序员.vue项目"></mt-header>
+        <mt-header fixed title="VUE项目学习"></mt-header>
      <!-- 路由区域  中间页面渲染 -->
-    <router-view></router-view>
+      <!-- 动画过渡 -->
+	 <transition>
+			<router-view></router-view>
+		</transition>
 
       <!-- tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
@@ -39,4 +42,21 @@
   padding-bottom: 50px;
   overflow-x: hidden;
 }
+// 中间组件--动画设置
+.v-enter{
+	opacity: 0;
+	transform: translateX(100%);
+}
+.v-leave-to{
+	opacity: 0;
+	transform: translateX(-100%);
+	position: absolute;
+}
+.v-enter-active,
+.v-leave-to{
+	transition: all 0.5s ease;
+}
+
+
+
 </style>

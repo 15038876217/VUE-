@@ -1,11 +1,20 @@
 // 入口文件
 import Vue from "vue"
 
-// 头部引入
-import { Header,Swipe, SwipeItem } from 'mint-ui';
+// 头部引入---头部 轮播图 按钮
+import { Header,Swipe, SwipeItem,Button } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
+
+// 导入时间插件
+import moment from "moment"
+// 定义全局的过滤器--必须定义在vue实例之前
+Vue.filter("dataFormat",function (dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+    return moment(dataStr).format(pattern)
+})
+
 
 
 // 引入底部css

@@ -6,6 +6,9 @@ import User from "./components/tabbar/UserContainer.vue"
 import Home from "./components/tabbar/HomeContainer.vue"
 import Shopcar from "./components/tabbar/ShopcarContainer.vue"
 import Search from "./components/tabbar/SearchContainer.vue"
+import News from "./components/news/NewsList.vue"
+import NewsInfo from "./components/news/Newsinfo.vue"
+
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -14,7 +17,10 @@ var router = new VueRouter({
     {path:"/home",component:Home},
     {path:"/user",component:User},
     {path:"/shopcar",component:Shopcar},
-    {path:"/search",component:Search}
+    {path:"/search",component:Search},
+    {path:"/home/newslist",component:News},
+    // 这里当地址中什么都不传时想要到详情页面需要在path配置后加？---/home/newsinfo/:id？
+    {path:"/home/newsinfo/:id",component:NewsInfo}
   ],
   linkActiveClass:"mui-active"
 })

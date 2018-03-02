@@ -14,12 +14,7 @@
 						</div>
 					</router-link>
 				</li>
-			
-
 			</ul>
-
-
-
 </div>
 
 </template>
@@ -40,7 +35,7 @@ export default{
                     if(res.body.status==0){
                          this.newslist=res.body.message; 
                       }else{
-                       toast("获取新闻列表失败")
+                          Toast("获取新闻列表失败")
                       }
             })
         }

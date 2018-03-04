@@ -1,14 +1,19 @@
 <template>
   <div class="box">
     <!-- 顶部 -->
-        <mt-header fixed title="VUE项目学习"></mt-header>
+         <mt-header fixed title="VUE商城项目">
+                  <span slot="left" @click="goBack" v-show="flag">
+                        <mt-button icon="back">返回</mt-button>
+                   </span>
+         </mt-header>
      <!-- 路由区域  中间页面渲染 -->
       <!-- 动画过渡 -->
-	 <transition>
+	  <transition>
 			<router-view></router-view>
 		</transition>
 
       <!-- tabbar 区域 -->
+      <!-- 通过改变路由的类名mui-tab-item-user来解决禁止点击的问题 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-user" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
@@ -20,7 +25,7 @@
 			</router-link>
 			<router-link class="mui-tab-item-user" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
         </span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -33,6 +38,32 @@
 </template>
 
 <script>
+// 点击返回按钮以flag作为标识进行后退
+export default{
+       data(){
+         return {
+               flag:false
+         }
+       },
+       created(){
+        this.flag=this.$route.path==="/home"?false:true;
+       },
+       methods:{
+         goBack(){
+            this.$router.go(-1);
+         }
+       },
+      //  通过watch来监听地址是首页则隐藏
+       watch:{
+         "$route.path":function (newVal){
+                if(newVal==="/home"){
+                   this.flag=false;
+                }else{
+                  this.flag=true;
+                }
+         }
+       }
+}
 </script>
 
 

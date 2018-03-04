@@ -120,6 +120,16 @@ export default{
           },
           addToShopCar(){
               this.ballFlag=!this.ballFlag;
+            //   拼接出要保存到store中的对象
+                  var goodsinfo={
+                      id:this.id,
+                      count:this.selectedCount,
+                      price:this.goodsinfo.sell_price,
+                      selected:true
+                  }
+                //   调用store中的mutations方法加入购物车
+           this.$store.commit("addToCar",goodsinfo);
+
 
           },
           beforeEnter(el){
